@@ -18,6 +18,7 @@ https://fanyu-meng.github.io/largeFiles/<路径>
 
 - `video-N.mp4`：第 N 个视频，按它在正文里出现的顺序编号。H.264 + AAC，画面最高 480p，音轨保留原始码率；原片本来就小的保持原样。
 - `video-N.webp`：这个视频的封面图，用作播放器的 `poster`。
+- `xiaohongshu.mp4`、`xiaohongshu.webp`：由这篇文章改编的小红书视频和它的封面，显示在网站文章标题下方。用个人网站仓库的 `scripts/publish-xhs-video.py` 生成，做法见那边的《小红书视频上站》。
 
 地址形如：
 
