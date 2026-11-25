@@ -1,16 +1,16 @@
 # largeFiles
 
-个人网站 [fanyu-meng.github.io](https://fanyu-meng.github.io/) 放不下的大文件。仓库用 GitHub Pages 发布，和个人网站同域名，网站通过站点根路径 `/largeFiles/…` 引用这里的文件。
+个人网站 [fanyu-meng.github.io](https://fanyu-meng.github.io/) 的大文件。它们不进网站仓库的 git 历史，网站部署时才合并发布，和网站同域名，网站通过站点根路径 `/largeFiles/…` 引用这里的文件。
 
 ## 发布方式
 
-Settings → Pages → Deploy from a branch，选存放这些文件的分支，目录选 `/ (root)`。发布后文件地址是：
+本仓库不单独开启 GitHub Pages。个人网站仓库的部署工作流（`.github/workflows/deploy.yml`）每次部署时检出本仓库的 `main` 分支，放在网站的 `/largeFiles/` 下一起发布。文件地址是：
 
 ```
 https://fanyu-meng.github.io/largeFiles/<路径>
 ```
 
-仓库名必须保持 `largeFiles`（注意大小写），否则网站里的路径会失效。
+只改了本仓库时，到个人网站仓库的 Actions 里手动运行 Deploy to GitHub Pages，新文件才会上线。仓库改名或换分支时，要同步改那个部署工作流。
 
 ## acoustics-media/
 
@@ -39,9 +39,9 @@ https://fanyu-meng.github.io/largeFiles/acoustics-media/<作品ID>/video-N.mp4
 ### 新增视频
 
 1. 在 `acoustics-media/<作品ID>/` 下放 `video-N.mp4` 和同名的 `video-N.webp`。单个文件不要超过 100 MB。
-2. 提交并推送，等 Pages 发布完成。
-3. 在个人网站文章 JSON 的 `html` 里加上面的 `<video>`。
+2. 提交并推送到 `main`。
+3. 在个人网站文章 JSON 的 `html` 里加上面的 `<video>`，推送网站后随部署上线。
 
 ## 容量
 
-GitHub Pages 站点上限约 1 GB，本仓库目前约 540 MB。接近上限时，再开一个同样结构的仓库，并在个人网站的 `WorksExplorer.tsx` 里加上它的路径。
+GitHub Pages 每个站点的发布上限约 1 GB，本仓库和个人网站共用这一份：目前网站约 106 MB，本仓库约 540 MB。接近上限时，可以给本仓库单独开启 Pages（Settings → Pages → Deploy from a branch → `main` / root，会发布到同一个 `/largeFiles/` 地址，拥有自己的 1 GB），再从个人网站的部署工作流里去掉检出本仓库的那一步。
